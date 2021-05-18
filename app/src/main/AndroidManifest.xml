@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Android_diary">
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".CategoryActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
