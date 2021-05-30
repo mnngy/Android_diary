@@ -48,7 +48,7 @@
             android:layout_gravity="center" />
 
         <EditText
-            android:id="@+id/edit_confirm_pw"
+            android:id="@+id/edit_pw_confirm"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:inputType="textPassword"
@@ -76,7 +76,8 @@
             android:background="@drawable/btn_round"
             android:gravity="center"
             android:text="가입"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:onClick="register"/>
 
         <TextView
             android:id="@+id/btn_cancel"
@@ -86,7 +87,8 @@
             android:background="@drawable/btn_round"
             android:gravity="center"
             android:text="취소"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:onClick="cancel"/>
     </LinearLayout>
 
 
