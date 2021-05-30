@@ -22,7 +22,7 @@
         android:layout_gravity="center">
 
         <EditText
-            android:id="@+id/edit_id"
+            android:id="@+id/edit_reg_id"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:inputType="text"
@@ -35,7 +35,7 @@
             android:layout_gravity="center" />
 
         <EditText
-            android:id="@+id/edit_pw"
+            android:id="@+id/edit_reg_pw"
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:inputType="textPassword"
@@ -70,7 +70,7 @@
         android:gravity="center">
 
         <TextView
-            android:id="@+id/btn_register"
+            android:id="@+id/btn_reg_register"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:background="@drawable/btn_round"
@@ -80,7 +80,7 @@
             android:onClick="register"/>
 
         <TextView
-            android:id="@+id/btn_cancel"
+            android:id="@+id/btn_reg_cancel"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_marginLeft="50dp"

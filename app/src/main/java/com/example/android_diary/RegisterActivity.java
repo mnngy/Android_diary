@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
@@ -20,7 +19,7 @@ import org.json.JSONObject;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText edit_id, edit_pw, edit_pw_confirm;
+    private EditText edit_reg_id, edit_reg_pw, edit_pw_confirm;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,14 +29,14 @@ public class RegisterActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        edit_id = findViewById(R.id.edit_id);
-        edit_pw = findViewById(R.id.edit_pw);
+        edit_reg_id = findViewById(R.id.edit_reg_id);
+        edit_reg_pw = findViewById(R.id.edit_reg_pw);
         edit_pw_confirm = findViewById(R.id.edit_pw_confirm);
     }
 
     public void register(View view) {
-        String userID = edit_id.getText().toString();
-        String userPassword = edit_pw.getText().toString();
+        String userID = edit_reg_id.getText().toString();
+        String userPassword = edit_reg_pw.getText().toString();
         String userPasswordConfirm = edit_pw_confirm.getText().toString();
 
         if (userPassword.equals(userPasswordConfirm) == false) {
@@ -50,10 +49,11 @@ public class RegisterActivity extends AppCompatActivity {
                         JSONObject jsonObject = new JSONObject(response);
                         boolean success = jsonObject.getBoolean("success");
                         if (success) {
-                            Toast.makeText(getApplicationContext(), "회원 등록에 성공했습니다.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "회원가입을 했습니다.", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                             startActivity(intent);
                         } else {
+                            Toast.makeText(getApplicationContext(), "서버에 문제가 있습니다.", Toast.LENGTH_SHORT).show();
                         }
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.toString(), Toast.LENGTH_LONG).show();
@@ -63,15 +63,13 @@ public class RegisterActivity extends AppCompatActivity {
             };
 
             RegisterRequest registerRequest = new RegisterRequest(userID, userPassword, responseListener);
-            System.out.println("1");
             RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-            System.out.println("2");
             queue.add(registerRequest);
-            System.out.println("3");
         }
     }
 
     public void cancel(View view) {
-
+        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 }
