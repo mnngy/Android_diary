@@ -12,40 +12,40 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class MyDiaryActivity extends AppCompatActivity {
+public class MyToDoActivity extends AppCompatActivity {
 
-    ListView lv_my_diary;
-    FloatingActionButton btn_diary_add;
+    private ListView lv_my_todo;
+    private FloatingActionButton btn_todo_add;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_diary);
+        setContentView(R.layout.activity_my_todo);
 
-        getSupportActionBar().setTitle("나의 다이어리");
+        getSupportActionBar().setTitle("나의 ToDo");
 
-        lv_my_diary = findViewById(R.id.lv_my_diary);
+        lv_my_todo = findViewById(R.id.lv_my_todo);
 
         displayList();
     }
 
     protected void displayList() {
-        DBDiaryHelper dbHelper = new DBDiaryHelper(this);
+        DBToDoHelper dbHelper = new DBToDoHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM diary", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM todo", null);
 
-        DiaryListViewAdapter adapter = new DiaryListViewAdapter();
+        ToDoListViewAdapter adapter = new ToDoListViewAdapter();
 
         while (cursor.moveToNext()) {
             adapter.addItemToList(cursor.getString(1), cursor.getString(2));
         }
 
-        lv_my_diary.setAdapter(adapter);
+        lv_my_todo.setAdapter(adapter);
     }
 
-    public void moveAddDiary(View view) {
-        Intent intent = new Intent(getApplicationContext(), AddDiaryActivity.class);
+    public void moveAddToDo(View view) {
+        Intent intent = new Intent(getApplicationContext(), AddToDoActivity.class);
         startActivity(intent);
     }
 }

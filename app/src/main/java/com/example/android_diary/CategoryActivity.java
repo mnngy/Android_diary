@@ -3,12 +3,10 @@ package com.example.android_diary;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -23,14 +21,13 @@ public class CategoryActivity extends AppCompatActivity {
         
         getSupportActionBar().setTitle("목록");
 
-        ListView listView = findViewById(R.id.listView);
+        ListView listView = findViewById(R.id.lv_my_diary);
 
         List<String> list = new ArrayList<>();
         list.add("ToDo");
         list.add("Diary");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                R.layout.list_type, list);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.item_category_design, list);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -38,12 +35,14 @@ public class CategoryActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String data = (String) parent.getItemAtPosition(position);
 
+                Intent intent;
+
                 if (data.equals("ToDo")) {
-                    System.out.println("todo");
+                    intent = new Intent(getApplicationContext(), MyToDoActivity.class);
                 } else {
-                    Intent intent = new Intent(getApplicationContext(), MyDiaryActivity.class);
-                    startActivity(intent);
+                    intent = new Intent(getApplicationContext(), MyDiaryActivity.class);
                 }
+                startActivity(intent);
             }
         });
     }

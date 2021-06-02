@@ -6,7 +6,7 @@
     android:background="@drawable/bg_splash">
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/lv_my_diary"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:divider="@color/bright_gray"
