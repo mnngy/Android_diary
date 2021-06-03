@@ -35,7 +35,7 @@ public class ToDoListViewAdapter extends BaseAdapter {
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.item_listview_design, null);
+            view = inflater.inflate(R.layout.item_todo_design, null);
         }
 
         TextView text1 = view.findViewById(R.id.text1);

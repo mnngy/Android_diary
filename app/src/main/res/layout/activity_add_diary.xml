@@ -27,12 +27,52 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/edit_diary_title"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="0dp"
         android:gravity="top"
         android:hint="내용을 입력해주세요."
-        android:inputType="textMultiLine"
-        />
+        android:inputType="textMultiLine" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="200dp">
+
+        <RadioButton
+            android:id="@+id/btn_cry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매우 슬픔"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="슬픔"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_emoticon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="보통"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_smile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좋음"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_laughing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매우 좋음"
+            android:onClick="checkEmotionButton"/>
+
+    </RadioGroup>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_diary_done"

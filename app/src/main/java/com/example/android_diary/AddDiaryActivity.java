@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -13,10 +14,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class AddDiaryActivity extends AppCompatActivity {
 
-    EditText edit_diary_title, edit_diary_content, edit_diary_date;
-    FloatingActionButton btn_diary_done;
+    private EditText edit_diary_title, edit_diary_content, edit_diary_date;
+    private FloatingActionButton btn_diary_done;
 
-    DBDiaryHelper dbHelper;
+    private DBDiaryHelper dbHelper;
+
+    private String emotion;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class AddDiaryActivity extends AppCompatActivity {
 
                 dbHelper = new DBDiaryHelper(getApplicationContext());
 
-                dbHelper.insert(title, content, date);
+                dbHelper.insert(title, content, emotion, date);
 
                 Toast.makeText(getApplicationContext(), "다이어리 작성을 하셨습니다.", Toast.LENGTH_SHORT).show();
 
@@ -47,5 +50,37 @@ public class AddDiaryActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void checkEmotionButton(View view) {
+        boolean checked = ((RadioButton) view).isChecked();
+
+        switch (view.getId()) {
+            case R.id.btn_cry:
+                if (checked) {
+                    emotion = "1";
+                }
+                break;
+            case R.id.btn_sad:
+                if (checked) {
+                    emotion = "2";
+                }
+                break;
+            case R.id.btn_emoticon:
+                if (checked) {
+                    emotion = "3";
+                }
+                break;
+            case R.id.btn_smile:
+                if (checked) {
+                    emotion = "4";
+                }
+                break;
+            case R.id.btn_laughing:
+                if (checked) {
+                    emotion = "5";
+                }
+                break;
+        }
     }
 }

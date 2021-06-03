@@ -19,6 +19,7 @@ public class DBDiaryHelper extends SQLiteOpenHelper {
                 "diaryIndex INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "diaryTitle TEXT," +
                 "diaryContent TEXT," +
+                "diaryEmotion TEXT," + // 1 ~ 5
                 "diaryDate TEXT)");
     }
 
@@ -28,9 +29,9 @@ public class DBDiaryHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String title, String content, String date) {
+    public void insert(String title, String content, String emotion, String date) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO diary(diaryTitle, diaryContent, diaryDate)" +
-                "VALUES('" + title + "','"+ content + "','" + date + "');");
+        db.execSQL("INSERT INTO diary(diaryTitle, diaryContent, diaryEmotion, diaryDate)" +
+                "VALUES('" + title + "','"+ content + "','" + emotion + "','" + date + "');");
     }
 }

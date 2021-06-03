@@ -13,5 +13,6 @@ public class Diary {
     private int diaryIndex;
     private String diaryTitle;
     private String diaryContent;
+    private String diaryEmotion;
     private String diaryDate;
 }
