@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -40,14 +41,33 @@ public class DiaryListViewAdapter extends BaseAdapter {
 
         TextView text1 = view.findViewById(R.id.text1);
         TextView text2 = view.findViewById(R.id.text2);
-        TextView text3 = view.findViewById(R.id.text3);
+        ImageView imageView = view.findViewById(R.id.imageView_diary);
 
         Diary diary = list.get(position);
 
         text1.setText(diary.getDiaryTitle());
         text2.setText(diary.getDiaryDate());
-        text3.setText(diary.getDiaryEmotion());
 
+        String diaryEmotion = diary.getDiaryEmotion();
+
+        switch (diaryEmotion) {
+            case "매우 슬픔":
+                imageView.setImageResource(R.drawable.ic_cry);
+                break;
+            case "슬픔":
+                imageView.setImageResource(R.drawable.ic_sad);
+                break;
+            case "보통":
+                imageView.setImageResource(R.drawable.ic_emoticon);
+                break;
+            case "좋음":
+                imageView.setImageResource(R.drawable.ic_smile);
+                break;
+            case "매우 좋음":
+                imageView.setImageResource(R.drawable.ic_laughing);
+                break;
+            default: break;
+        }
         return view;
     }
 
