@@ -6,11 +6,15 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,5 +73,34 @@ public class MyDiaryActivity extends AppCompatActivity {
     public void moveAddDiary(View view) {
         Intent intent = new Intent(getApplicationContext(), AddDiaryActivity.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        Intent intent;
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.item_category:
+                intent = new Intent(getApplicationContext(), CategoryActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.item_todo:
+                intent = new Intent(getApplicationContext(), MyToDoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.item_diary:
+                intent = new Intent(getApplicationContext(), MyDiaryActivity.class);
+                startActivity(intent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
