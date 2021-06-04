@@ -69,7 +69,7 @@ public class MyToDoActivity extends AppCompatActivity {
         ToDoListViewAdapter adapter = new ToDoListViewAdapter();
 
         while (cursor.moveToNext()) {
-            adapter.addItemToList(cursor.getString(1), cursor.getString(2));
+            adapter.addItemToList(cursor.getString(1), cursor.getString(3));
         }
 
         lv_my_todo.setAdapter(adapter);

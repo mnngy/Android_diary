@@ -9,9 +9,17 @@
         android:id="@+id/edit_todo_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="날짜를 입력해주세요. (YYYY/MM/DD)"
+        android:hint="날짜를 입력해주세요."
         android:inputType="text"
-        />
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/edit_todo_title"
@@ -20,19 +28,32 @@
         android:layout_below="@id/edit_todo_date"
         android:hint="제목을 입력해주세요."
         android:inputType="text"
-        />
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
 
     <EditText
         android:id="@+id/edit_todo_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/edit_todo_title"
-        android:layout_marginTop="-5dp"
         android:gravity="top"
         android:hint="내용을 입력해주세요."
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
         android:inputType="textMultiLine"
-        />
-
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_todo_done"

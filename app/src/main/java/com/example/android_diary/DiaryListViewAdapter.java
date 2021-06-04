@@ -55,8 +55,8 @@ public class DiaryListViewAdapter extends BaseAdapter {
         Diary diary = new Diary();
 
         diary.setDiaryTitle(title);
-        diary.setDiaryEmotion(emotion);
         diary.setDiaryDate(date);
+        diary.setDiaryEmotion(emotion);
 
         list.add(diary);
     }

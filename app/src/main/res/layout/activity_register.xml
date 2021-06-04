@@ -32,7 +32,8 @@
             android:textSize="20dp"
             android:singleLine="true"
             android:ems="10"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bright_gray" />
 
         <EditText
             android:id="@+id/edit_reg_pw"
@@ -45,7 +46,8 @@
             android:textSize="20dp"
             android:singleLine="true"
             android:ems="10"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bright_gray" />
 
         <EditText
             android:id="@+id/edit_pw_confirm"
@@ -58,7 +60,8 @@
             android:textSize="20dp"
             android:singleLine="true"
             android:ems="10"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:backgroundTint="@color/bright_gray" />
     </LinearLayout>
 
 

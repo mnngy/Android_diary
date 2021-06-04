@@ -58,27 +58,27 @@ public class AddDiaryActivity extends AppCompatActivity {
         switch (view.getId()) {
             case R.id.btn_cry:
                 if (checked) {
-                    emotion = "1";
+                    emotion = "매우 슬픔";
                 }
                 break;
             case R.id.btn_sad:
                 if (checked) {
-                    emotion = "2";
+                    emotion = "슬픔";
                 }
                 break;
             case R.id.btn_emoticon:
                 if (checked) {
-                    emotion = "3";
+                    emotion = "보통";
                 }
                 break;
             case R.id.btn_smile:
                 if (checked) {
-                    emotion = "4";
+                    emotion = "좋음";
                 }
                 break;
             case R.id.btn_laughing:
                 if (checked) {
-                    emotion = "5";
+                    emotion = "매우 좋음";
                 }
                 break;
         }

@@ -60,7 +60,7 @@ public class MyDiaryActivity extends AppCompatActivity {
         DiaryListViewAdapter adapter = new DiaryListViewAdapter();
 
         while (cursor.moveToNext()) {
-            adapter.addItemToList(cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            adapter.addItemToList(cursor.getString(1), cursor.getString(4), cursor.getString(3));
         }
 
         lv_my_diary.setAdapter(adapter);

@@ -25,7 +25,8 @@
         android:textSize="20dp"
         android:singleLine="true"
         android:ems="10"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/bright_gray" />
 
     <EditText
         android:id="@+id/edit_log_pw"
@@ -38,7 +39,8 @@
         android:textSize="20dp"
         android:singleLine="true"
         android:ems="10"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        android:backgroundTint="@color/bright_gray"/>
 
     <TextView
         android:id="@+id/btn_log_register"
@@ -60,7 +62,6 @@
         android:gravity="center"
         android:onClick="login"
         android:text="로그인"
-        android:textColor="#fff"
-        android:textSize="25dp" />
+        android:textColor="#fff" />
 
 </LinearLayout>
