@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash">
+
+    <EditText
+        android:id="@+id/update_todo_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="날짜를 입력해주세요."
+        android:inputType="text"
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/update_todo_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/update_todo_date"
+        android:hint="제목을 입력해주세요."
+        android:inputType="text"
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/update_todo_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/update_todo_title"
+        android:gravity="top"
+        android:hint="내용을 입력해주세요."
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:inputType="textMultiLine"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_todo_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/bright_gray"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:src="@drawable/ic_update"
+        android:onClick="updateToDo"/>
+
+</RelativeLayout>

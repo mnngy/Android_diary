@@ -1,6 +1,7 @@
 package com.example.android_diary;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -28,14 +29,38 @@ public class DBToDoHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insert(String title, String content, String date) {
+    public ToDo select(String title) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM todo WHERE todoTitle = '" + title + "'", null);
+
+        cursor.moveToNext();
+
+        return new ToDo(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3)
+        );
+    }
+
+    public void update(String title, String content, String date, String previousTitle) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO todo(todoTitle, todoContent, todoDate)" +
-                "VALUES('" + title + "','"+ content + "','" + date + "')");
+        db.execSQL("UPDATE todo SET " +
+                "todoTitle = '" + title + "'" +
+                ", todoContent = '" + content + "'" +
+                ", todoDate = '" + date + "'" +
+                " WHERE todoTitle = '" + previousTitle + "'");
     }
 
     public void delete(String title) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("DELETE FROM todo WHERE todoTitle = '" + title + "'");
+    }
+
+    public void insert(String title, String content, String date) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("INSERT INTO todo(todoTitle, todoContent, todoDate)" +
+                "VALUES('" + title + "','"+ content + "','" + date + "')");
     }
 }

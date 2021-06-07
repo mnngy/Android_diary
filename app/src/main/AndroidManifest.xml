@@ -20,6 +20,7 @@
         <activity android:name=".AddDiaryActivity"></activity>
         <activity android:name=".MyToDoActivity"></activity>
         <activity android:name=".AddToDoActivity"></activity>
+        <activity android:name=".UpdateToDoActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
