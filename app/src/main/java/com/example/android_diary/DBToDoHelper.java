@@ -31,6 +31,11 @@ public class DBToDoHelper extends SQLiteOpenHelper {
     public void insert(String title, String content, String date) {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO todo(todoTitle, todoContent, todoDate)" +
-                "VALUES('" + title + "','"+ content + "','" + date + "');");
+                "VALUES('" + title + "','"+ content + "','" + date + "')");
+    }
+
+    public void delete(String title) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM todo WHERE todoTitle = '" + title + "'");
     }
 }

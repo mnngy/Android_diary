@@ -50,7 +50,34 @@ public class MyToDoActivity extends AppCompatActivity {
                 builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(), items[which], Toast.LENGTH_SHORT).show();
+
+                        switch (items[which]) {
+                            case "조회/수정":
+                                break;
+                            case "삭제":
+                                dbHelper = new DBToDoHelper(getApplicationContext());
+                                db = dbHelper.getWritableDatabase();
+
+                                Cursor cursor = db.rawQuery("SELECT * FROM todo", null);
+
+                                ToDoListViewAdapter adapter = new ToDoListViewAdapter();
+
+                                while (cursor.moveToNext()) {
+                                    adapter.addItemToList(cursor.getString(1), cursor.getString(1));
+                                }
+
+                                ToDo todo = (ToDo) adapter.getItem(position);
+                                String title = todo.getTodoTitle();
+                                dbHelper.delete(title);
+
+                                Toast.makeText(getApplicationContext(), "ToDo를 삭제했습니다.", Toast.LENGTH_SHORT).show();
+
+                                Intent intent = getIntent();
+                                finish();
+                                startActivity(intent);
+                                break;
+                            default: break;
+                        }
                         dialog.dismiss();
                     }
                 });
