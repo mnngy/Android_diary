@@ -1,6 +1,7 @@
 package com.example.android_diary;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -33,5 +34,36 @@ public class DBDiaryHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         db.execSQL("INSERT INTO diary(diaryTitle, diaryContent, diaryEmotion, diaryDate)" +
                 "VALUES('" + title + "','"+ content + "','" + emotion + "','" + date + "');");
+    }
+
+    public void delete(String title) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("DELETE FROM diary WHERE diaryTitle = '" + title + "'");
+    }
+
+    public Diary select(String title) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT * FROM diary WHERE diaryTitle = '" + title + "'", null);
+
+        cursor.moveToNext();
+
+        return new Diary(
+                cursor.getInt(0),
+                cursor.getString(1),
+                cursor.getString(2),
+                cursor.getString(3),
+                cursor.getString(4)
+        );
+    }
+
+    public void update(String title, String content, String emotion, String date, String previousTitle) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.execSQL("UPDATE diary SET " +
+                "diaryTitle = '" + title + "'" +
+                ", diaryContent = '" + content + "'" +
+                ", diaryEmotion = '" + emotion + "'" +
+                ", diaryDate = '" + date + "'" +
+                " WHERE diaryTitle = '" + previousTitle + "'");
     }
 }

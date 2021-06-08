@@ -15,7 +15,6 @@ public class AddToDoActivity extends AppCompatActivity {
 
     EditText edit_todo_title, edit_todo_content, edit_todo_date;
     FloatingActionButton btn_todo_done;
-
     DBToDoHelper dbHelper;
 
     @Override
@@ -40,7 +39,6 @@ public class AddToDoActivity extends AppCompatActivity {
                 dbHelper = new DBToDoHelper(getApplicationContext());
 
                 dbHelper.insert(title, content, date);
-
                 Toast.makeText(getApplicationContext(), "ToDo 작성을 하셨습니다.", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), MyToDoActivity.class);

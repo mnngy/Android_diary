@@ -16,13 +16,11 @@ public class AddDiaryActivity extends AppCompatActivity {
 
     private EditText edit_diary_title, edit_diary_content, edit_diary_date;
     private FloatingActionButton btn_diary_done;
-
     private DBDiaryHelper dbHelper;
-
     private String emotion;
 
     @Override
-    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diary);
 
@@ -43,7 +41,6 @@ public class AddDiaryActivity extends AppCompatActivity {
                 dbHelper = new DBDiaryHelper(getApplicationContext());
 
                 dbHelper.insert(title, content, emotion, date);
-
                 Toast.makeText(getApplicationContext(), "다이어리 작성을 하셨습니다.", Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(getApplicationContext(), MyDiaryActivity.class);

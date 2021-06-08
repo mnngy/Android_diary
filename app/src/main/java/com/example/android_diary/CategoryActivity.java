@@ -33,9 +33,8 @@ public class CategoryActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String data = (String) parent.getItemAtPosition(position);
-
                 Intent intent;
+                String data = (String) parent.getItemAtPosition(position);
 
                 if (data.equals("ToDo")) {
                     intent = new Intent(getApplicationContext(), MyToDoActivity.class);

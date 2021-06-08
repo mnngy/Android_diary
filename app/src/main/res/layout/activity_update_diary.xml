@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash">
+
+    <EditText
+        android:id="@+id/update_diary_date"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:hint="날짜를 입력해주세요."
+        android:inputType="text"
+        android:singleLine="true"
+        android:textColor="#fff"
+        android:textColorHint="#DCFFFFFF"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/update_diary_title"
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_below="@id/update_diary_date"
+        android:hint="제목을 입력해주세요."
+        android:inputType="text"
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:singleLine="true"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/update_diary_content"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/update_diary_title"
+        android:gravity="top"
+        android:hint="내용을 입력해주세요."
+        android:textColorHint="#DCFFFFFF"
+        android:textColor="#fff"
+        android:inputType="textMultiLine"
+        android:background="@drawable/tv_round_design"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/text_emotion"
+        android:layout_width="match_parent"
+        android:layout_height="30sp"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/group_emotion"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        android:text="오늘의 기분은 어떠세요?" />
+
+    <RadioGroup
+        android:id="@+id/group_emotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="90dp">
+
+        <RadioButton
+            android:id="@+id/btn_update_cry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매우 슬픔"
+            android:textColor="#DCFFFFFF"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_update_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="슬픔"
+            android:textColor="#DCFFFFFF"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_update_emoticon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="보통"
+            android:textColor="#DCFFFFFF"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_update_smile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="좋음"
+            android:textColor="#DCFFFFFF"
+            android:onClick="checkEmotionButton"/>
+        <RadioButton
+            android:id="@+id/btn_update_laughing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매우 좋음"
+            android:textColor="#DCFFFFFF"
+            android:onClick="checkEmotionButton"/>
+
+    </RadioGroup>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_diary_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/bright_gray"
+        app:borderWidth="0dp"
+        app:fabSize="normal"
+        android:src="@drawable/ic_update"
+        android:onClick="updateDiary"/>
+
+</RelativeLayout>

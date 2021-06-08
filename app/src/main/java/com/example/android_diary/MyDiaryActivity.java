@@ -20,8 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MyDiaryActivity extends AppCompatActivity {
 
+    private DBDiaryHelper dbHelper;
+    private SQLiteDatabase db;
     private ListView lv_my_diary;
-    private String[] items;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MyDiaryActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("나의 다이어리");
 
-        items = new String[]{"조회", "수정", "삭제"};
+        String[] items = {"조회/수정", "삭제"};
 
         lv_my_diary = findViewById(R.id.lv_my_diary);
         lv_my_diary.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -42,7 +43,34 @@ public class MyDiaryActivity extends AppCompatActivity {
                 builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), items[which], Toast.LENGTH_SHORT).show();
+                                dbHelper = new DBDiaryHelper(getApplicationContext());
+                                db = dbHelper.getReadableDatabase();
+                                DiaryListViewAdapter adapter = new DiaryListViewAdapter();
+                                Intent intent;
+
+                                Cursor cursor = db.rawQuery("SELECT * FROM diary", null);
+
+                                while (cursor.moveToNext()) {
+                                    adapter.addItemToList(cursor.getString(1), cursor.getString(4), cursor.getString(3));
+                                }
+
+                                String title = ((Diary) adapter.getItem(position)).getDiaryTitle();
+
+                                switch (items[which]) {
+                                    case "조회/수정":
+                                        intent = new Intent(getApplicationContext(), UpdateDiaryActivity.class);
+                                        intent.putExtra("title", title);
+                                        startActivity(intent);
+                                        break;
+                                    case "삭제":
+                                        dbHelper.delete(title);
+                                        Toast.makeText(getApplicationContext(), "다이어리를 삭제했습니다.", Toast.LENGTH_SHORT).show();
+                                        intent = getIntent();
+                                        finish();
+                                        startActivity(intent);
+                                        break;
+                                    default: break;
+                                }
                                 dialog.dismiss();
                             }
                         });

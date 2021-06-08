@@ -1,13 +1,13 @@
 package com.example.android_diary;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +17,6 @@ public class UpdateToDoActivity extends AppCompatActivity {
 
     private EditText update_todo_title, update_todo_date, update_todo_content;
     private DBToDoHelper dbHelper;
-    private SQLiteDatabase db;
     private String title;
 
     @Override
@@ -50,9 +49,9 @@ public class UpdateToDoActivity extends AppCompatActivity {
         String previousTitle = this.title;
 
         dbHelper.update(title, content, date, previousTitle);
+        Toast.makeText(getApplicationContext(), "ToDo 를 수정했습니다.", Toast.LENGTH_SHORT).show();
 
-        Intent intent = getIntent();
-        finish();
+        Intent intent = new Intent(getApplicationContext(), MyToDoActivity.class);
         startActivity(intent);
     }
 

@@ -27,8 +27,6 @@ public class MyToDoActivity extends AppCompatActivity {
 
     private DBToDoHelper dbHelper;
     private SQLiteDatabase db;
-    private String[] items;
-
     private ListView lv_my_todo;
 
     @Override
@@ -38,46 +36,41 @@ public class MyToDoActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("나의 ToDo");
 
-        items = new String[]{"조회/수정", "삭제"};
+        String[] items = {"조회/수정", "삭제"};
 
         lv_my_todo = findViewById(R.id.lv_my_todo);
         lv_my_todo.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(parent.getContext());
+
                 builder.setTitle("선택해주세요.");
 
                 builder.setSingleChoiceItems(items, -1, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        dbHelper = new DBToDoHelper(getApplicationContext());
+                        db = dbHelper.getReadableDatabase();
+                        ToDoListViewAdapter adapter = new ToDoListViewAdapter();
                         Intent intent;
 
-                        dbHelper = new DBToDoHelper(getApplicationContext());
-                        db = dbHelper.getWritableDatabase();
-
                         Cursor cursor = db.rawQuery("SELECT * FROM todo", null);
-
-                        ToDoListViewAdapter adapter = new ToDoListViewAdapter();
 
                         while (cursor.moveToNext()) {
                             adapter.addItemToList(cursor.getString(1), cursor.getString(3));
                         }
 
-                        ToDo todo = (ToDo) adapter.getItem(position);
-                        String title = todo.getTodoTitle();
-
+                        String title = ((ToDo) adapter.getItem(position)).getTodoTitle();
 
                         switch (items[which]) {
                             case "조회/수정":
                                 intent = new Intent(getApplicationContext(), UpdateToDoActivity.class);
                                 intent.putExtra("title", title);
                                 startActivity(intent);
-
                                 break;
                             case "삭제":
                                 dbHelper.delete(title);
                                 Toast.makeText(getApplicationContext(), "ToDo 를 삭제했습니다.", Toast.LENGTH_SHORT).show();
-
                                 intent = getIntent();
                                 finish();
                                 startActivity(intent);
@@ -93,7 +86,6 @@ public class MyToDoActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         displayList();
     }
 

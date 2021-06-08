@@ -18,6 +18,7 @@
         <activity android:name=".CategoryActivity"></activity>
         <activity android:name=".MyDiaryActivity"></activity>
         <activity android:name=".AddDiaryActivity"></activity>
+        <activity android:name=".UpdateDiaryActivity"></activity>
         <activity android:name=".MyToDoActivity"></activity>
         <activity android:name=".AddToDoActivity"></activity>
         <activity android:name=".UpdateToDoActivity"></activity>
